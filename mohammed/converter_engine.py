@@ -3,15 +3,20 @@
 
 import json
 
-# Physical constants
-H  = 6.62607015e-34   # Planck constant (J·s)
-C  = 2.99792458e8     # Speed of light (m/s)
-KB = 1.380649e-23     # Boltzmann constant (J/K)
-E  = 1.602176634e-19  # Elementary charge (C)
-ME = 9.1093837015e-31 # Electron mass (kg)
+class constants:
+    """"
+    Collection of physical constants.
+    """
+    H  = 6.62607015e-34   # Planck constant (J·s)
+    C  = 2.99792458e8     # Speed of light (m/s)
+    KB = 1.380649e-23     # Boltzmann constant (J/K)
+    E  = 1.602176634e-19  # Elementary charge (C)
+    ME = 9.1093837015e-31 # Electron mass (kg)
+
+constants.H
 
 # Load database
-with open("Database.json", "r") as f:
+with open("mohammed/Database.json", "r") as f:
     DB = json.load(f)
 
 # Build lookup dicts from the database
@@ -43,6 +48,8 @@ def to_joules(value, unit):
         return H * (value * u["scale_to_Hz"])
     elif u["type"] == "wavenumber":
         return H * C * (value * u["scale_to_per_metre"])
+    else:
+        raise Exception("Type not supported.")
 
 # Converting Joules to the given unit
 def from_joules(joules, unit):

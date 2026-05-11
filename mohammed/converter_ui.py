@@ -1,10 +1,12 @@
 # converter_ui.py - interface for the unit converter by Mo
 
-import converter_engine as eng
-from quiz import run_quiz
+from . import converter_engine as eng
+#from mohammed.quiz import run_quiz
 
-# Printing the conversion results as a table
 def print_table(results):
+    """
+    Printing the conversion results as a table
+    """
     print(f"\n{'Unit':<28} {'Value':>16}")
     print("-" * 46)
     for unit, val in results.items():
